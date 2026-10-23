@@ -1,0 +1,32 @@
+[
+  {
+    "id": "MP-001",
+    "title": "Hydraulic Pressure Drop - Inspection Checklist",
+    "source": "sample-maintenance-manual.md",
+    "text": "If hydraulic pressure falls below the approved operating band, stop the cycle using the site-approved safe procedure. Inspect for visible leaks around hoses, fittings, seals and cylinders. Check reservoir level and filter restriction indicators. Do not loosen pressurized hydraulic fittings. Isolate and lock out equipment before physical inspection. Escalate persistent pressure loss to qualified maintenance personnel."
+  },
+  {
+    "id": "MP-002",
+    "title": "High Oil Temperature - Cooling and Lubrication",
+    "source": "sample-maintenance-manual.md",
+    "text": "Elevated hydraulic oil temperature may relate to excessive duty cycle, insufficient cooling, restricted airflow, low oil level, contamination or incorrect oil viscosity. Check alarms and cooling status first. Compare trends against the manufacturer's temperature limits. Do not open a hot pressurized hydraulic circuit; follow lockout and site safety procedures."
+  },
+  {
+    "id": "MP-003",
+    "title": "Vibration Spike - Mechanical Inspection",
+    "source": "sample-maintenance-manual.md",
+    "text": "A sudden vibration increase may indicate looseness, misalignment, bearing wear, foundation issues or a change in operating load. Compare the frequency and amplitude trend with recent baseline readings. Inspect mounting points and guarding only after energy isolation. A vibration spike alone does not prove a particular component has failed."
+  },
+  {
+    "id": "MP-004",
+    "title": "Combined Pressure Loss and Vibration Event - Historical Incident 024",
+    "source": "sample-historical-incidents.md",
+    "text": "In a simulated prior maintenance event, a pressure decline coincided with increased vibration. The response was to stop the cycle under the approved safe operating procedure, isolate energy, check the hydraulic circuit and mountings, and record measurements. The incident is an example for triage only; it is not evidence that a current event has the same root cause."
+  },
+  {
+    "id": "MP-005",
+    "title": "Escalation and Safe Work Requirements",
+    "source": "sample-safety-procedure.md",
+    "text": "AI-generated output is advisory only. Follow approved plant procedures, manufacturer limits, lockout/tagout, and all local safety rules. Do not operate equipment outside approved limits or bypass guards or interlocks. A qualified engineer must confirm any diagnosis before work orders or repairs are authorized. Record sensor values, time, operator actions and evidence references."
+  }
+]

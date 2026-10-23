@@ -1,0 +1,34 @@
+{
+  "nodes": [
+    {"node_key":"symptom:pressure_drop","node_type":"symptom","label":"Hydraulic pressure drop","description":"Measured pressure is below the configured 260 bar threshold.","document_key":null},
+    {"node_key":"symptom:oil_overheat","node_type":"symptom","label":"High oil temperature","description":"Measured oil temperature is above the configured 50 C threshold.","document_key":null},
+    {"node_key":"symptom:vibration_spike","node_type":"symptom","label":"Vibration spike","description":"Measured vibration exceeds the configured 4.5 mm/s threshold.","document_key":null},
+    {"node_key":"component:seal_or_hose_leak","node_type":"component","label":"Hydraulic seal or hose leak","description":"Possible component hypothesis when pressure drops; must be verified by inspection.","document_key":null},
+    {"node_key":"component:relief_valve","node_type":"component","label":"Relief valve or hydraulic pump","description":"Possible pressure-control component to assess using approved procedure.","document_key":null},
+    {"node_key":"component:cooling_system","node_type":"component","label":"Oil cooling system","description":"Cooling airflow and heat-exchange path associated with elevated oil temperature.","document_key":null},
+    {"node_key":"component:oil_condition","node_type":"component","label":"Oil level and condition","description":"Oil level, contamination and viscosity are possible factors for high temperature.","document_key":null},
+    {"node_key":"component:bearing_or_mount","node_type":"component","label":"Bearing, alignment or mountings","description":"Possible mechanical factors associated with vibration; not a confirmed root cause.","document_key":null},
+    {"node_key":"incident:024","node_type":"historical_incident","label":"Synthetic incident 024: pressure loss with vibration","description":"Synthetic example in which pressure loss and vibration increased together; not evidence that a present event has the same cause.","document_key":"MP-004"},
+    {"node_key":"procedure:hydraulic_inspection","node_type":"procedure","label":"Hydraulic inspection checklist","description":"Check alarms, fluid level and visible external leaks after following approved isolation and lockout procedures.","document_key":"MP-001"},
+    {"node_key":"procedure:thermal_checks","node_type":"procedure","label":"Thermal and lubrication checks","description":"Review cooling, oil condition and operating load against manufacturer limits.","document_key":"MP-002"},
+    {"node_key":"procedure:vibration_checks","node_type":"procedure","label":"Vibration inspection checklist","description":"Compare baseline trends and inspect mounting points only after energy isolation.","document_key":"MP-003"},
+    {"node_key":"procedure:safe_isolation","node_type":"procedure","label":"Safe isolation and escalation","description":"Follow site lockout/tagout and approved procedures; a qualified engineer verifies any diagnosis.","document_key":"MP-005"}
+  ],
+  "edges": [
+    {"source_key":"symptom:pressure_drop","target_key":"component:seal_or_hose_leak","relation":"may_indicate","confidence":0.45,"source_note":"General triage hypothesis; not a diagnosis."},
+    {"source_key":"symptom:pressure_drop","target_key":"component:relief_valve","relation":"may_involve","confidence":0.35,"source_note":"General triage hypothesis; verify against machine manual."},
+    {"source_key":"symptom:pressure_drop","target_key":"procedure:hydraulic_inspection","relation":"review_procedure","confidence":0.9,"source_note":"Synthetic maintenance guidance."},
+    {"source_key":"symptom:oil_overheat","target_key":"component:cooling_system","relation":"may_involve","confidence":0.4,"source_note":"General triage hypothesis; compare with manufacturer limits."},
+    {"source_key":"symptom:oil_overheat","target_key":"component:oil_condition","relation":"may_involve","confidence":0.35,"source_note":"General triage hypothesis; compare with manufacturer limits."},
+    {"source_key":"symptom:oil_overheat","target_key":"procedure:thermal_checks","relation":"review_procedure","confidence":0.9,"source_note":"Synthetic maintenance guidance."},
+    {"source_key":"symptom:vibration_spike","target_key":"component:bearing_or_mount","relation":"may_indicate","confidence":0.4,"source_note":"General triage hypothesis; not a diagnosis."},
+    {"source_key":"symptom:vibration_spike","target_key":"procedure:vibration_checks","relation":"review_procedure","confidence":0.9,"source_note":"Synthetic maintenance guidance."},
+    {"source_key":"incident:024","target_key":"symptom:pressure_drop","relation":"recorded_with","confidence":0.8,"source_note":"Synthetic incident record."},
+    {"source_key":"incident:024","target_key":"symptom:vibration_spike","relation":"recorded_with","confidence":0.8,"source_note":"Synthetic incident record; not proof of root cause."},
+    {"source_key":"incident:024","target_key":"procedure:hydraulic_inspection","relation":"response_included","confidence":0.7,"source_note":"Synthetic incident response."},
+    {"source_key":"incident:024","target_key":"procedure:vibration_checks","relation":"response_included","confidence":0.7,"source_note":"Synthetic incident response."},
+    {"source_key":"procedure:hydraulic_inspection","target_key":"procedure:safe_isolation","relation":"requires_before_physical_inspection","confidence":1.0,"source_note":"Safety rule from synthetic example; follow approved local procedures."},
+    {"source_key":"procedure:thermal_checks","target_key":"procedure:safe_isolation","relation":"requires_before_physical_inspection","confidence":1.0,"source_note":"Safety rule from synthetic example; follow approved local procedures."},
+    {"source_key":"procedure:vibration_checks","target_key":"procedure:safe_isolation","relation":"requires_before_physical_inspection","confidence":1.0,"source_note":"Safety rule from synthetic example; follow approved local procedures."}
+  ]
+}

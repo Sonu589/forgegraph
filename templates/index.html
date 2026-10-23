@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ForgeGraph — Air-gapped maintenance copilot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-mark" aria-hidden="true">FG</div>
+  <div class="brand-copy"><h1>ForgeGraph</h1><p>Evidence-grounded predictive maintenance</p></div>
+  <div class="top-status"><span class="dot"></span><span id="system-status">Checking services…</span><span class="mode">{{ mode|upper }} MODE</span></div>
+</header>
+<main class="layout">
+  <section class="intro">
+    <p class="eyebrow">1500T FORGING PRESS · LOCAL AI WORKFLOW</p>
+    <h2>Understand the signal.<br><span>Trace the evidence.</span></h2>
+    <p class="muted">Combine sensor thresholds, maintenance-document retrieval and a local Gemma endpoint. The built-in demo uses a clearly labelled rule-based response when no model is configured.</p>
+  </section>
+  <section class="panel sensors">
+    <div class="panel-heading"><div><p class="eyebrow">LIVE / SIMULATED TELEMETRY</p><h3>Sensor readings</h3></div><span class="pill" id="severity-pill">Awaiting analysis</span></div>
+    <div class="sensor-grid">
+      <label>Hydraulic pressure <span>bar</span><input id="pressure" type="number" min="0" max="1000" step="0.1" value="252"></label>
+      <label>Oil temperature <span>°C</span><input id="temperature" type="number" min="-50" max="250" step="0.1" value="56"></label>
+      <label>Z-axis vibration <span>mm/s</span><input id="vibration" type="number" min="0" max="100" step="0.1" value="5.6"></label>
+    </div>
+    <div class="button-row"><button class="primary" id="analyze">Analyze readings</button><button class="secondary" id="normal-sample">Load normal sample</button><button class="secondary" id="anomaly-sample">Generate anomaly</button></div>
+    <div id="error-banner" class="notice hidden" role="status"></div>
+  </section>
+  <section class="panel result-panel">
+    <div class="panel-heading"><div><p class="eyebrow">DIAGNOSTIC ASSISTANT</p><h3>Analysis</h3></div><span class="pill" id="model-pill">Not run</span></div>
+    <p id="analysis" class="analysis-copy">Run an analysis to see threshold flags, related maintenance evidence and an advisory assessment.</p>
+    <p class="disclaimer" id="disclaimer">AI output is advisory only. Follow approved plant procedures and consult a qualified engineer.</p>
+  </section>
+  <section class="panel graph-panel">
+    <div class="panel-heading"><div><p class="eyebrow">INCIDENT RELATIONSHIPS</p><h3>Curated knowledge graph</h3></div><span class="pill" id="graph-count">0 relationships</span></div>
+    <div id="graph-list" class="graph-list"><p class="muted">Related symptoms, possible components, historical examples and procedures will appear after analysis.</p></div>
+    <p class="fine-print">Graph links are curated hypotheses, not confirmed root causes. Confirm every action against approved site procedures.</p>
+  </section>
+  <section class="panel evidence-panel">
+    <div class="panel-heading"><div><p class="eyebrow">RETRIEVED KNOWLEDGE</p><h3>Supporting documents</h3></div><span class="pill" id="evidence-count">0 sources</span></div>
+    <div id="evidence-list" class="evidence-list"><p class="muted">Retrieved references will appear here after analysis.</p></div>
+  </section>
+  <section class="panel ingest-panel">
+    <div class="panel-heading"><div><p class="eyebrow">KNOWLEDGE INGESTION</p><h3>Add a maintenance note</h3></div></div>
+    <form id="ingest-form">
+      <label>Document title<input id="doc-title" required maxlength="180" placeholder="e.g. Hydraulic seal inspection"></label>
+      <label>Source label<input id="doc-source" required maxlength="240" placeholder="e.g. maintenance-manual.md"></label>
+      <label>Document text<textarea id="doc-text" required maxlength="50000" rows="4" placeholder="Paste non-sensitive maintenance guidance…"></textarea></label>
+      <button class="secondary" type="submit">Index document</button><span id="ingest-result" class="muted" role="status"></span>
+    </form>
+    <p class="fine-print">Demo mode keeps added notes in application memory and uses transparent lexical retrieval. AlloyDB mode stores vectors using the registered EmbeddingGemma model.</p>
+  </section>
+</main>
+<footer>ForgeGraph prototype · Synthetic readings only · No machinery control or automatic work orders</footer>
+<script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body></html>
