@@ -2,8 +2,6 @@
 
 **Evidence-Grounded AI for Air-Gapped Predictive Maintenance** — a Code Vipassana Season 16 Project Pioneer prototype that evolves the 1500T forging-press codelab into a retrieval-augmented maintenance assistant.
 
-> Status: a working local/demo implementation and AlloyDB Omni integration path are included. The GKE/AlloyDB integration requires the infrastructure and model registrations documented in Session 2; it has not been run against your cloud project from this package. Do not describe a cloud deployment as completed until you run and verify it.
-
 ## Why it differs from the codelabs
 
 - Session 1: direct prompt-based Gemma analysis of anomalous sensor values.
